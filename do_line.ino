@@ -44,22 +44,22 @@ void doc_cam_bien_do_line(int huong_cb)
 
   if (huong_cb == cb_phai) //đọc 6 cảm biến phải
   {
-    //    sensor[0]=digitalRead(33);
-    //    sensor[1]=digitalRead(32);
-    sensor[2] = digitalRead(41); // need to change
-    sensor[3] = digitalRead(40);
-    //    sensor[4]=digitalRead(29);
-    //    sensor[5]=digitalRead(28);
+    sensor[0] = digitalRead(45);
+    sensor[1] = digitalRead(44);
+    sensor[2] = digitalRead(43);
+    sensor[3] = digitalRead(42);
+    sensor[4] = digitalRead(41);
+    sensor[5] = digitalRead(40);
   }
 
   if (huong_cb == cb_trai) //đọc 6 cảm biến trái
-  {
-    sensor[0] = digitalRead(33);
-    sensor[1] = digitalRead(32);
-    sensor[2] = digitalRead(31);
-    sensor[3] = digitalRead(30);
-    sensor[4] = digitalRead(29);
-    sensor[5] = digitalRead(28);
+{
+    sensor[0] = digitalRead(28);
+    sensor[1] = digitalRead(29);
+    sensor[2] = digitalRead(30);
+    sensor[3] = digitalRead(31);
+    sensor[4] = digitalRead(32);
+    sensor[5] = digitalRead(33);
   }
 
   if (huong_cb == cb_truoc_sau)
