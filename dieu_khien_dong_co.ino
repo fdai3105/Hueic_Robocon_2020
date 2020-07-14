@@ -81,7 +81,6 @@ void dieu_khien_dong_co(int huong_cb, int huong_robot, int toc_do_trai, int toc_
   //      phải   -------- trái
   if(huong_robot == chay_phai)
   {
-//    Serial.println("ok");
     analogWrite(pwm2_toi, 0);
     analogWrite(pwm1_lui, 0);
     analogWrite(pwm4_lui, 0);

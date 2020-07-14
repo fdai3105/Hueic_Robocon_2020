@@ -53,8 +53,9 @@ int error1, previous_error1;
 int PID_value_1, PID_phai_1, PID_trai_1;
 int gia_tri_dau_phai = 180;
 int gia_tri_dau_trai = 180;
-
 volatile int    xung_encoder1, xung_encoder2, xung_encoder3, xung_encoder4;
+unsigned long time_now = 0;
+unsigned long time_now1 = 0;
 
 void doc_encoder1() //ngắt 0, chân 2
 {
@@ -82,13 +83,8 @@ void setup()
 
   khop1.attach(10); //0-180
   khop2.attach(11); //0-80-150
+
   readyPosition();
-
-
-  //  digitalWrite(encoder1,   HIGH);
-  //  digitalWrite(encoder2,   HIGH);
-  //  digitalWrite(encoder3,   HIGH);
-  //  digitalWrite(encoder4,   HIGH);
 
   attachInterrupt(2, doc_encoder1,  RISING); //ngắt 0, chân 2
   attachInterrupt(3, doc_encoder2,  RISING); //ngắt 1, chân 3
@@ -109,11 +105,11 @@ void setup()
     analogWrite(i, 0);
   }
 
-  //  analogWrite(pwm1_toi, 0);
-  //  analogWrite(pwm2_toi, 0);
-  //  analogWrite(pwm3_toi, 0);
-  //  analogWrite(pwm4_toi, 0);
-  delay(2000);
+  analogWrite(pwm1_toi, 0);
+  analogWrite(pwm2_toi, 0);
+  analogWrite(pwm3_toi, 0);
+  analogWrite(pwm4_toi, 0);
+  delay(500);
 }
 /*
   CÁC ĐỊNH NGHĨA:
@@ -129,93 +125,100 @@ void setup()
 */
 void loop()
 {
-  chay_do_line_do_encoder (cb_truoc, chay_toi, 1820, 1, 120, 120, 25); //chọn cb trước và sau, chạy tới, 1200 xung, dừng, tốc độ trái 100, phải 105
-  delay(1000);
-  haxuong();
-  delay(1000);
-  kep();
-  delay(1000);
-  nanglen();
-  delay(1000);
-  chay_do_line_do_encoder(cb_truoc, chay_toi, 3000, 1, 120, 120, 25); // vào chặng ba đầu
-  delay(1000);
-  quay_encoder(quay_trai, 68, 15, 0);
-  delay(2000);
-  chay_do_line_do_encoder(cb_truoc, chay_toi, 2300, 1, 120, 120, 25);
-  delay(1000);
-  haxuong();
-  delay(1000);
-  tha();
-  delay(1000);
-  nanglen();
-  delay(1000);
-  chay_do_line_do_encoder(cb_sau, chay_lui, 2500, 1, 120, 120, 25);
-  delay(1000);
-  quay_encoder(quay_phai, 80, 15, 0);
-  delay(2000);
-  chay_do_line_do_encoder(cb_truoc, chay_toi, 4650, 1, 120, 120, 25); // todo (test delay = 10 on dongcosever)
-  delay(1000);
-  haxuong();
-  delay(1000);
-  kep();
-  delay(1000);
-  nanglen();
-  delay(1000);
-  //  quay_encoder(quay_trai, 68, 15, 0); //quay phải, tốc độ 120, 400 xung để cảm biến số 36 thoát khỏi line ban đầu
-  //  delay(2000);
-  //  chay_do_line_do_encoder("", chay_toi, 1800, 1, 120, 120, 25); //chạy không dò line
-  //  delay(2000);
-  //  quay_encoder(quay_phai, 80, 13, 0);
-  //  delay(2000);
-  //  chay_do_line_do_encoder(cb_truoc, chay_toi, 2000, 1, 120, 120, 25);
+//  chay_do_line_do_encoder (cb_truoc_sau, chay_toi, 1840, 1, 120, 120, 25); //chọn cb trước và sau, chạy tới, 1200 xung, dừng, tốc độ trái 100, phải 105
+//  delay(100);
+//
+//  haxuong(); // grap two red can
+//  delay(100);
+//  kep();
+//  delay(100);
+//  nanglen();
+//  delay(100);
+//
+//  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 33, 1, 1, 140, 140, 25); // vào ngã ba đầu
+//  delay(500);
+//  quay_encoder(quay_trai, 250, 300, 0);
+//  quay_bat_line(quay_trai, 150, 25);
+//  delay(500);
+//  chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 1500, 0, 120, 120, 25);
+//  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 39, 1, 1, 140, 140, 25);
+//  delay(500);
+//
+//  haxuong(); // drop two red can
+//  delay(500);
+//  tha();
+//  delay(500);
+//  nanglen();
+//  delay(500);
+//
+//  chay_do_line_do_encoder(cb_sau, chay_lui, 2000, 0, 140, 140, 25);
+//  chay_do_line_doc_cam_bien(cb_sau, chay_lui, 30, 1, 1, 140, 140, 25); //chạy lùi, thả 2 lon đỏ, bắt 30 đỡ trượt
+//  delay(500);
+//  quay_encoder(quay_phai, 250, 300, 0);
+//  quay_bat_line(quay_phai, 150, 25);
+//  delay(500);
+//  chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 4620, 1, 150, 150, 25);
+//
+//  delay(500); // grap two green can
+//  haxuong();
+//  delay(500);
+//  kep();
+//  delay(500);
+//  nanglen();
+//  delay(500);
+//
+//  chay_do_line_doc_cam_bien(cb_sau, chay_lui, 33, 1, 1, 150, 150, 25);
+//  delay(500);
+//  quay_encoder(quay_trai, 250, 300, 0);
+//  quay_bat_line(quay_trai, 150, 24);
+//  delay(500);
+//  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 33, 1, 1, 140, 140, 25); // get center left sensor 33 value
+//  delay(500);
+//  quay_encoder(quay_phai, 250, 300, 0);
+//  quay_bat_line(quay_phai, 150, 24); // ss front center
+//  delay(500);
+//  chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 3000, 0, 140, 140, 25);
+//  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 33, 1, 1, 140, 140, 25); // get center left sensor 33 value
+//  delay(500);
+//  quay_encoder(quay_trai, 250, 300, 0);
+//  quay_bat_line(quay_trai, 150, 24); // ss front center
+//  delay(500);
+//  chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 450, 1, 150, 150, 25);
+//  delay(500);
+//
+//  haxuong(); // drop two green can
+//  delay(500);
+//  tha();
+//  delay(500);
+//  nanglen();
+//  delay(500);
+//
+  chay_do_line_doc_cam_bien(cb_sau, chay_lui, 31, 1, 1, 140, 140, 25);
+  delay(500);
+  quay_encoder(quay_phai, 250, 300, 0);
+  quay_bat_line(quay_phai, 150, 24); // ss front center
+  delay(500);
+  chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 1500, 0, 140, 140, 25);
+  chay_do_line_do_encoder("", chay_toi, 700, 0, 140, 125, 25); //chạy mờ tới lon đỏ xanh
+  delay(500);
+  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 40, 1, 1, 150, 150, 25);
+  delay(500);
+  quay_encoder(quay_trai, 250, 300, 0);
+  quay_bat_line(quay_trai, 150, 31); // ss back center
+  delay(500);
+//
+//  haxuong();
+//  delay(100);
+//  kep();
+//  delay(500);
+//  nanglen();
+//  delay(500);
+//
+//  delay(500);
+//  quay_encoder(quay_trai, 250, 300, 0);
+//  quay_bat_line(quay_trai, 150, 25); // ss back center
+//  delay(500);
+  
+  //todo
   delay(1000000);
-  //THỰC HIỆN 2 QUÀ ĐỎ
-  //    quay_bat_line(quay_trai, 120, 42);  //quay phải, tốc độ 120, bắt cảm biến số 42
-  //    delay(500);
-  //    chay_do_line_doc_cam_bien (cb_trai, chay_trai, 38, 1 , 1, 140, 145, 30); //chọn cb trái, chạy trái, bắt cảm biến số 38, bắt 1 line, dừng, tốc độ trái 140, phải 145
-  //    delay(100);
-  //    chay_do_line_do_encoder (cb_truoc_sau, chay_toi, 1370, 1, 120, 125, 30);
-  //    delay(2000);
-  //
-  //  //THỰC HIỆN 2 QUÀ XANH - ĐỎ
-  //  chay_do_line_doc_cam_bien (cb_sau, chay_lui, 43, 1 , 1, 100, 105, 25);
-  //  delay(500);
-  //  quay_encoder(quay_trai, 120, 400, 0); //quay trái, tốc độ 120, 400 xung để cảm biến số 37 thoát khỏi line ban đầu
-  //  quay_bat_line(quay_trai, 120, 37);    //quay trái, tốc độ 100, bắt cảm biến số 37
-  //  delay(500);
-  //  chay_do_line_do_encoder (cb_truoc_sau, chay_toi, 3500, 0, 170, 165, 30);    //chọn cb trước và sau, chạy tới, 3500 xung, ko dừng, tốc độ trái 170, phải 165
-  //  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 42, 1 , 1, 100, 105, 25); //chọn cb trước và sau, chạy tới, bắt cảm biến số 42, bắt 1 line, dừng, tốc độ trái 140, phải 145
-  //  delay(1000);
-  //  quay_bat_line(quay_phai, 100, 30);
-  //  delay(2000);
-  //  chay_do_line_do_encoder (cb_phai, chay_phai, 3000, 0, 180, 185, 30);
-  //  chay_do_line_doc_cam_bien(cb_phai, chay_phai, 36, 1 , 1, 100, 105, 25);
-  //  delay(500);
-  //  chay_do_line_do_encoder (cb_truoc_sau, chay_toi, 460, 1, 100, 105, 25);
-  //  delay(2000);
-  //  chay_do_line_doc_cam_bien (cb_sau, chay_lui, 43, 1 , 1, 100, 105, 25);
-  //  delay(500);
-  //
-  //  //  //THỰC HIỆN 2 QUÀ XANH
-  //  chay_do_line_do_encoder (cb_trai, chay_trai, 2700, 0, 170, 165, 30);
-  //  chay_do_line_doc_cam_bien(cb_trai, chay_trai, 25, 1 , 1, 100, 105, 25);
-  //  delay(500);
-  //  chay_do_line_do_encoder (cb_sau, chay_lui, 150, 0, 100, 105, 25);
-  //  chay_do_line_doc_cam_bien (cb_sau, chay_lui, 30, 1 , 1, 100, 105, 25);
-  //  delay(500);
-  //  quay_encoder(quay_phai, 120, 400, 0); //quay phải, tốc độ 120, 400 xung để cảm biến số 36 thoát khỏi line ban đầu
-  //  quay_bat_line(quay_phai, 100, 36);    //quay phải, tốc độ 100, bắt cảm biến số 36
-  //  delay(1000);
-  //  chay_do_line_do_encoder (cb_truoc_sau, chay_toi, 1100, 1, 120, 120, 25);
-  //  delay(1000);
-  //  chay_do_line_do_encoder (cb_sau, chay_lui, 100, 1, 120, 120, 25);
-  //  delay(500);
-  //  quay_bat_line(quay_trai, 100, 42);
-  //  delay(500);
-  //  chay_do_line_do_encoder (cb_truoc_sau, chay_toi, 650, 0, 105, 100, 25);
-  //  delay(500);
-  //  chay_do_line_doc_cam_bien (cb_phai, chay_phai, 36, 2 , 1, 100, 105, 25);
-  //  delay(500);
-  //  chay_do_line_do_encoder (cb_truoc_sau, chay_toi, 460, 1, 100, 105, 25);
-  //  delay(20000);
 }

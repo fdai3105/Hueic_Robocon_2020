@@ -1,3 +1,4 @@
+
 void readyPosition()
 {
   a = 0;
@@ -8,33 +9,33 @@ void readyPosition()
 
 void nanglen()
 {
-  for (a; a >= 0; a--) // h? xu?ng
+  for (a; a >= 0; a--) // 0 to 90
   {
     khop1.write(a);
     delay(10);
   }
 }
-void haxuong()
+void haxuong() // 90 to 0
 {
-  for (a; a <= 90; a++) // nâng lên
+  for (a; a <= 90; a++)
   {
     khop1.write(a);
-    //delay (50);
+    delay (10);
   }
 }
 void kep()
 {
-  for (b; b >= 15; b--) // k?p
+  for (b; b >= 10; b--)
   {
     khop2.write(b);
-    //delay (50);
+    delay (5);
   }
 }
 void tha()
 {
-  for (b; b <= 80; b++) // th?
+  for (b; b <= 80; b++)
   {
     khop2.write(b);
-    //delay (50);
+    delay (5);
   }
 }

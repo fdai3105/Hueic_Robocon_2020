@@ -6,118 +6,119 @@
 void doc_cam_bien_do_line(int huong_cb)
 {
   //kết nối sensor: trai 0-1-2-3-4-5 phai
-  if(huong_cb == cb_truoc_sau) //đọc 6 cảm biến trước và 6 cảm biến sau
+  if (huong_cb == cb_truoc_sau) //đọc 6 cảm biến trước và 6 cảm biến sau
   {
-    sensor[0]=digitalRead(22);
-    sensor[1]=digitalRead(23);
-    sensor[2]=digitalRead(24);
-    sensor[3]=digitalRead(25);
-    sensor[4]=digitalRead(26);
-    sensor[5]=digitalRead(27);
-    
-    sensor1[0]=digitalRead(34);
-    sensor1[1]=digitalRead(35);
-    sensor1[2]=digitalRead(36);
-    sensor1[3]=digitalRead(37);
-    sensor1[4]=digitalRead(38);
-    sensor1[5]=digitalRead(39);
+    sensor[0] = digitalRead(22);
+    sensor[1] = digitalRead(23);
+    sensor[2] = digitalRead(24);
+    sensor[3] = digitalRead(25);
+    sensor[4] = digitalRead(26);
+    sensor[5] = digitalRead(27);
+
+    sensor1[0] = digitalRead(34);
+    sensor1[1] = digitalRead(35);
+    sensor1[2] = digitalRead(36);
+    sensor1[3] = digitalRead(37);
+    sensor1[4] = digitalRead(38);
+    sensor1[5] = digitalRead(39);
   }
-  
-  if(huong_cb == cb_truoc) //đọc 6 cảm biến trước
+
+  if (huong_cb == cb_truoc) //đọc 6 cảm biến trước
   {
-    sensor[0]=digitalRead(22);
-    sensor[1]=digitalRead(23);
-    sensor[2]=digitalRead(24);
-    sensor[3]=digitalRead(25);
-    sensor[4]=digitalRead(26);
-    sensor[5]=digitalRead(27);
+    sensor[0] = digitalRead(22);
+    sensor[1] = digitalRead(23);
+    sensor[2] = digitalRead(24);
+    sensor[3] = digitalRead(25);
+    sensor[4] = digitalRead(26);
+    sensor[5] = digitalRead(27);
   }
-  if(huong_cb == cb_sau) //đọc 6 cảm biến sau
+  if (huong_cb == cb_sau) //đọc 6 cảm biến sau
   {
-    sensor[0]=digitalRead(34);
-    sensor[1]=digitalRead(35);
-    sensor[2]=digitalRead(36);
-    sensor[3]=digitalRead(37);
-    sensor[4]=digitalRead(38);
-    sensor[5]=digitalRead(39);
+    sensor[0] = digitalRead(34);
+    sensor[1] = digitalRead(35);
+    sensor[2] = digitalRead(36);
+    sensor[3] = digitalRead(37);
+    sensor[4] = digitalRead(38);
+    sensor[5] = digitalRead(39);
   }
-  
-  if(huong_cb == cb_phai) //đọc 6 cảm biến phải
+
+  if (huong_cb == cb_phai) //đọc 6 cảm biến phải
   {
-    sensor[0]=digitalRead(33);
-    sensor[1]=digitalRead(32);
-    sensor[2]=digitalRead(31); // need to change
-    sensor[3]=digitalRead(30);
-    sensor[4]=digitalRead(29);
-    sensor[5]=digitalRead(28);
+    //    sensor[0]=digitalRead(33);
+    //    sensor[1]=digitalRead(32);
+    sensor[2] = digitalRead(41); // need to change
+    sensor[3] = digitalRead(40);
+    //    sensor[4]=digitalRead(29);
+    //    sensor[5]=digitalRead(28);
   }
-  if(huong_cb == cb_trai) //đọc 6 cảm biến trái
+
+  if (huong_cb == cb_trai) //đọc 6 cảm biến trái
   {
-    sensor[0]=digitalRead(39);
-    sensor[1]=digitalRead(38);
-    sensor[2]=digitalRead(37);
-    sensor[3]=digitalRead(36);
-    sensor[4]=digitalRead(35);
-    sensor[5]=digitalRead(34);
+    sensor[0] = digitalRead(33);
+    sensor[1] = digitalRead(32);
+    sensor[2] = digitalRead(31);
+    sensor[3] = digitalRead(30);
+    sensor[4] = digitalRead(29);
+    sensor[5] = digitalRead(28);
   }
-  
-  if(huong_cb == cb_truoc_sau)
+
+  if (huong_cb == cb_truoc_sau)
   {
     //lệch phải
-    if     ((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==1)) error= 5;
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==1)&&(sensor[5]==1)) error= 4;
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==1)&&(sensor[5]==0)) error= 3;
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==1)&&(sensor[4]==1)&&(sensor[5]==0)) error= 2;
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==1)&&(sensor[4]==0)&&(sensor[5]==0)) error= 1;
+    if     ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 1)) error = 5;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 1) && (sensor[5] == 1)) error = 4;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 1) && (sensor[5] == 0)) error = 3;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 1) && (sensor[4] == 1) && (sensor[5] == 0)) error = 2;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 1) && (sensor[4] == 0) && (sensor[5] == 0)) error = 1;
     //ở giữa
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==1)&&(sensor[3]==1)&&(sensor[4]==0)&&(sensor[5]==0)) error=0;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 1) && (sensor[3] == 1) && (sensor[4] == 0) && (sensor[5] == 0)) error = 0;
     //lệch trái
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==1)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==0)) error=-1;
-    else if((sensor[0]==0)&&(sensor[1]==1)&&(sensor[2]==1)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==0)) error=-2;
-    else if((sensor[0]==0)&&(sensor[1]==1)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==0)) error=-3;
-    else if((sensor[0]==1)&&(sensor[1]==1)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==0)) error=-4;
-    else if((sensor[0]==1)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==0)) error=-5;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 1) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 0)) error = -1;
+    else if ((sensor[0] == 0) && (sensor[1] == 1) && (sensor[2] == 1) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 0)) error = -2;
+    else if ((sensor[0] == 0) && (sensor[1] == 1) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 0)) error = -3;
+    else if ((sensor[0] == 1) && (sensor[1] == 1) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 0)) error = -4;
+    else if ((sensor[0] == 1) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 0)) error = -5;
     //trường hợp khác
     else  error = 0;
 
     //lệch phải
-    if     ((sensor1[0]==0)&&(sensor1[1]==0)&&(sensor1[2]==0)&&(sensor1[3]==0)&&(sensor1[4]==0)&&(sensor1[5]==1)) error1= 5;
-    else if((sensor1[0]==0)&&(sensor1[1]==0)&&(sensor1[2]==0)&&(sensor1[3]==0)&&(sensor1[4]==1)&&(sensor1[5]==1)) error1= 4;
-    else if((sensor1[0]==0)&&(sensor1[1]==0)&&(sensor1[2]==0)&&(sensor1[3]==0)&&(sensor1[4]==1)&&(sensor1[5]==0)) error1= 3;
-    else if((sensor1[0]==0)&&(sensor1[1]==0)&&(sensor1[2]==0)&&(sensor1[3]==1)&&(sensor1[4]==1)&&(sensor1[5]==0)) error1= 2;
-    else if((sensor1[0]==0)&&(sensor1[1]==0)&&(sensor1[2]==0)&&(sensor1[3]==1)&&(sensor1[4]==0)&&(sensor1[5]==0)) error1= 1;
+    if     ((sensor1[0] == 0) && (sensor1[1] == 0) && (sensor1[2] == 0) && (sensor1[3] == 0) && (sensor1[4] == 0) && (sensor1[5] == 1)) error1 = 5;
+    else if ((sensor1[0] == 0) && (sensor1[1] == 0) && (sensor1[2] == 0) && (sensor1[3] == 0) && (sensor1[4] == 1) && (sensor1[5] == 1)) error1 = 4;
+    else if ((sensor1[0] == 0) && (sensor1[1] == 0) && (sensor1[2] == 0) && (sensor1[3] == 0) && (sensor1[4] == 1) && (sensor1[5] == 0)) error1 = 3;
+    else if ((sensor1[0] == 0) && (sensor1[1] == 0) && (sensor1[2] == 0) && (sensor1[3] == 1) && (sensor1[4] == 1) && (sensor1[5] == 0)) error1 = 2;
+    else if ((sensor1[0] == 0) && (sensor1[1] == 0) && (sensor1[2] == 0) && (sensor1[3] == 1) && (sensor1[4] == 0) && (sensor1[5] == 0)) error1 = 1;
     //ở giữa
-    else if((sensor1[0]==0)&&(sensor1[1]==0)&&(sensor1[2]==1)&&(sensor1[3]==1)&&(sensor1[4]==0)&&(sensor1[5]==0)) error1=0;
+    else if ((sensor1[0] == 0) && (sensor1[1] == 0) && (sensor1[2] == 1) && (sensor1[3] == 1) && (sensor1[4] == 0) && (sensor1[5] == 0)) error1 = 0;
     //lệch trái
-    else if((sensor1[0]==0)&&(sensor1[1]==0)&&(sensor1[2]==1)&&(sensor1[3]==0)&&(sensor1[4]==0)&&(sensor1[5]==0)) error1=-1;
-    else if((sensor1[0]==0)&&(sensor1[1]==1)&&(sensor1[2]==1)&&(sensor1[3]==0)&&(sensor1[4]==0)&&(sensor1[5]==0)) error1=-2;
-    else if((sensor1[0]==0)&&(sensor1[1]==1)&&(sensor1[2]==0)&&(sensor1[3]==0)&&(sensor1[4]==0)&&(sensor1[5]==0)) error1=-3;
-    else if((sensor1[0]==1)&&(sensor1[1]==1)&&(sensor1[2]==0)&&(sensor1[3]==0)&&(sensor1[4]==0)&&(sensor1[5]==0)) error1=-4;
-    else if((sensor1[0]==1)&&(sensor1[1]==0)&&(sensor1[2]==0)&&(sensor1[3]==0)&&(sensor1[4]==0)&&(sensor1[5]==0)) error1=-5;
+    else if ((sensor1[0] == 0) && (sensor1[1] == 0) && (sensor1[2] == 1) && (sensor1[3] == 0) && (sensor1[4] == 0) && (sensor1[5] == 0)) error1 = -1;
+    else if ((sensor1[0] == 0) && (sensor1[1] == 1) && (sensor1[2] == 1) && (sensor1[3] == 0) && (sensor1[4] == 0) && (sensor1[5] == 0)) error1 = -2;
+    else if ((sensor1[0] == 0) && (sensor1[1] == 1) && (sensor1[2] == 0) && (sensor1[3] == 0) && (sensor1[4] == 0) && (sensor1[5] == 0)) error1 = -3;
+    else if ((sensor1[0] == 1) && (sensor1[1] == 1) && (sensor1[2] == 0) && (sensor1[3] == 0) && (sensor1[4] == 0) && (sensor1[5] == 0)) error1 = -4;
+    else if ((sensor1[0] == 1) && (sensor1[1] == 0) && (sensor1[2] == 0) && (sensor1[3] == 0) && (sensor1[4] == 0) && (sensor1[5] == 0)) error1 = -5;
     //trường hợp khác
     else  error1 = 0;
   }
   else
   {
     //lệch phải
-    if     ((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==1)) error= 5;
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==1)&&(sensor[5]==1)) error= 4;
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==1)&&(sensor[5]==0)) error= 3;
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==1)&&(sensor[4]==1)&&(sensor[5]==0)) error= 2;
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==1)&&(sensor[4]==0)&&(sensor[5]==0)) error= 1;
+    if     ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 1)) error = 5;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 1) && (sensor[5] == 1)) error = 4;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 1) && (sensor[5] == 0)) error = 3;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 1) && (sensor[4] == 1) && (sensor[5] == 0)) error = 2;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 1) && (sensor[4] == 0) && (sensor[5] == 0)) error = 1;
     //ở giữa
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==1)&&(sensor[3]==1)&&(sensor[4]==0)&&(sensor[5]==0)) error=0;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 1) && (sensor[3] == 1) && (sensor[4] == 0) && (sensor[5] == 0)) error = 0;
     //lệch trái
-    else if((sensor[0]==0)&&(sensor[1]==0)&&(sensor[2]==1)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==0)) error=-1;
-    else if((sensor[0]==0)&&(sensor[1]==1)&&(sensor[2]==1)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==0)) error=-2;
-    else if((sensor[0]==0)&&(sensor[1]==1)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==0)) error=-3;
-    else if((sensor[0]==1)&&(sensor[1]==1)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==0)) error=-4;
-    else if((sensor[0]==1)&&(sensor[1]==0)&&(sensor[2]==0)&&(sensor[3]==0)&&(sensor[4]==0)&&(sensor[5]==0)) error=-5;
+    else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 1) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 0)) error = -1;
+    else if ((sensor[0] == 0) && (sensor[1] == 1) && (sensor[2] == 1) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 0)) error = -2;
+    else if ((sensor[0] == 0) && (sensor[1] == 1) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 0)) error = -3;
+    else if ((sensor[0] == 1) && (sensor[1] == 1) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 0)) error = -4;
+    else if ((sensor[0] == 1) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 0)) error = -5;
     //trường hợp khác
     else  error = 0;
   }
   //Serial.print(error);
   //Serial.print(" ");
   //Serial.println(error1);
-  
+
 }
