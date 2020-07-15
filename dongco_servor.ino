@@ -25,7 +25,7 @@ void haxuong() // 90 to 0
 }
 void kep()
 {
-  for (b; b >= 10; b--)
+  for (b; b >= 7; b--)
   {
     khop2.write(b);
     delay (5);

@@ -32,6 +32,7 @@ void doc_cam_bien_do_line(int huong_cb)
     sensor[4] = digitalRead(26);
     sensor[5] = digitalRead(27);
   }
+  
   if (huong_cb == cb_sau) //đọc 6 cảm biến sau
   {
     sensor[0] = digitalRead(34);
@@ -62,8 +63,7 @@ void doc_cam_bien_do_line(int huong_cb)
     sensor[5] = digitalRead(33);
   }
 
-  if (huong_cb == cb_truoc_sau)
-  {
+  if (huong_cb == cb_truoc_sau) {
     //lệch phải
     if     ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 1)) error = 5;
     else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 1) && (sensor[5] == 1)) error = 4;
@@ -97,11 +97,10 @@ void doc_cam_bien_do_line(int huong_cb)
     else if ((sensor1[0] == 1) && (sensor1[1] == 0) && (sensor1[2] == 0) && (sensor1[3] == 0) && (sensor1[4] == 0) && (sensor1[5] == 0)) error1 = -5;
     //trường hợp khác
     else  error1 = 0;
-  }
-  else
-  {
+
+  } else {
     //lệch phải
-    if     ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 1)) error = 5;
+    if      ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 0) && (sensor[5] == 1)) error = 5;
     else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 1) && (sensor[5] == 1)) error = 4;
     else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 0) && (sensor[4] == 1) && (sensor[5] == 0)) error = 3;
     else if ((sensor[0] == 0) && (sensor[1] == 0) && (sensor[2] == 0) && (sensor[3] == 1) && (sensor[4] == 1) && (sensor[5] == 0)) error = 2;
