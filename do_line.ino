@@ -53,7 +53,7 @@ void doc_cam_bien_do_line(int huong_cb)
   }
 
   if (huong_cb == cb_trai) //đọc 6 cảm biến trái
-{
+  {
     sensor[0] = digitalRead(28);
     sensor[1] = digitalRead(29);
     sensor[2] = digitalRead(30);

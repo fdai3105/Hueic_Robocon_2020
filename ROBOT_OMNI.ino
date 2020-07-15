@@ -125,109 +125,104 @@ void setup()
 */
 void loop()
 {
-    chay_do_line_do_encoder (cb_truoc_sau, chay_toi, 1840, 1, 120, 120, 25); //chọn cb trước và sau, chạy tới, 1200 xung, dừng, tốc độ trái 100, phải 105
-    delay(100);
-  
-    haxuong(); // grap two red can
-    delay(100);
-    kep();
-    delay(100);
-    nanglen();
-    delay(100);
-  
-    chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 33, 1, 1, 140, 140, 25); // vào ngã ba đầu
-    delay(500);
-    quay_encoder(quay_trai, 250, 300, 0);
-    quay_bat_line(quay_trai, 150, 25);
-    delay(500);
-    chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 1500, 0, 120, 120, 25);
-    chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 39, 1, 1, 140, 140, 25);
-    delay(500);
-  
-    haxuong(); // drop two red can
-    delay(500);
-    tha();
-    delay(500);
-    nanglen();
-    delay(500);
-  
-    chay_do_line_do_encoder(cb_sau, chay_lui, 2000, 0, 140, 140, 25);
-    chay_do_line_doc_cam_bien(cb_sau, chay_lui, 30, 1, 1, 140, 140, 25); //chạy lùi, thả 2 lon đỏ, bắt 30 đỡ trượt
-    delay(500);
-    quay_encoder(quay_phai, 250, 300, 0);
-    quay_bat_line(quay_phai, 150, 25);
-    delay(500);
-    chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 4620, 1, 150, 150, 25);
-  
-    delay(500); // grap two green can
-    haxuong();
-    delay(500);
-    kep();
-    delay(500);
-    nanglen();
-    delay(500);
-  
-    chay_do_line_doc_cam_bien(cb_sau, chay_lui, 33, 1, 1, 150, 150, 25);
-    delay(500);
-    quay_encoder(quay_trai, 250, 300, 0);
-    quay_bat_line(quay_trai, 150, 24);
-    delay(500);
-    chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 33, 1, 1, 140, 140, 25); // get center left sensor 33 value
-    delay(500);
-    quay_encoder(quay_phai, 250, 300, 0);
-    quay_bat_line(quay_phai, 150, 24); // ss front center
-    delay(500);
-    chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 3000, 0, 140, 140, 25);
-    chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 33, 1, 1, 140, 140, 25); // get center left sensor 33 value
-    delay(500);
-    quay_encoder(quay_trai, 250, 300, 0);
-    quay_bat_line(quay_trai, 150, 24); // ss front center
-    delay(500);
-    chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 450, 1, 150, 150, 25);
-    delay(500);
-  
-    haxuong(); // drop two green can
-    delay(500);
-    tha();
-    delay(500);
-    nanglen();
-    delay(500);
-  
-    chay_do_line_doc_cam_bien(cb_sau, chay_lui, 30, 1, 1, 140, 140, 25);
-    delay(100);
-    chay_do_line_do_encoder(cb_phai, chay_phai, 1500, 0, 140, 140, 25);
-    chay_do_line_do_encoder(cb_phai, chay_phai, 3000, 1, 160, 140, 25); // 170 //chạy mờ tới lon đỏ xanh
-    delay(100);
-    chay_do_line_doc_cam_bien(cb_phai, chay_phai, 36, 1, 1, 150, 150, 25);
-    delay(100);
-  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_lui, 39, 1, 0, 150, 150, 25);
-  chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 1150, 1, 120, 120, 25);
-  delay(100);
+    chay_do_line_do_encoder(cb_truoc_sau, chay_lui, 2860, 1, 120, 120, 25); //chọn cb trước và sau, chạy tới, 1200 xung, dừng, tốc độ trái 100, phải 105
 
-  haxuong();
-  delay(100);
-  kep();
-  delay(500);
-  nanglen();
-  delay(500);
-
-  chay_do_line_do_encoder(cb_truoc, chay_toi, 1000, 1, 160, 160, 25);
-  chay_do_line_doc_cam_bien(cb_trai, chay_trai, 25, 1, 1, 140, 140, 25);
-  delay(100);
-  chay_do_line_doc_cam_bien(cb_sau, chay_lui, 30, 1, 1, 160, 160, 25);
-  chay_do_line_do_encoder(cb_trai, chay_trai, 2700, 0, 160, 160, 25);
-  chay_do_line_doc_cam_bien(cb_trai, chay_trai, 25, 1, 1, 160, 160, 25);
-  delay(100);
-  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 39, 1, 1, 140, 140, 25);
-  delay(100);
-  
-  haxuong(); // drop red & green can
-  delay(100);
-  tha();
-  delay(500);
-  nanglen();
-  delay(500);
-  
-  chay_do_line_doc_cam_bien(cb_sau, chay_lui, 30, 1, 1, 140, 140, 25);
+//  chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 1860, 1, 120, 120, 25); //chọn cb trước và sau, chạy tới, 1200 xung, dừng, tốc độ trái 100, phải 105
+//  delay(100);
+//
+//  haxuong(); // grap two red can
+//  delay(100);
+//  kep();
+//  delay(100);
+//  nanglen();
+//  delay(100);
+//
+//  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 33, 1, 1, 140, 140, 25); // vào ngã ba đầu
+//  delay(100);
+//  quay_encoder(quay_trai, 250, 300, 0);
+//  quay_bat_line(quay_trai, 150, 25);
+//  delay(100);
+//  chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 1500, 0, 120, 120, 25);
+//  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 39, 1, 1, 140, 140, 25);
+//  delay(100);
+//
+//  haxuong(); // drop two red can
+//  delay(100);
+//  tha();
+//  delay(100);
+//  nanglen();
+//  delay(100);
+//
+//  chay_do_line_do_encoder(cb_sau, chay_lui, 2000, 0, 140, 140, 25);
+//  chay_do_line_doc_cam_bien(cb_sau, chay_lui, 30, 1, 1, 140, 140, 25); //chạy lùi, thả 2 lon đỏ, bắt 30 đỡ trượt
+//  delay(100);
+//  quay_encoder(quay_phai, 250, 300, 0);
+//  quay_bat_line(quay_phai, 150, 25);
+//  delay(100);
+//  chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 4620, 1, 150, 150, 25);
+//
+//  delay(100); // grap two green can
+//  haxuong();
+//  delay(100);
+//  kep();
+//  delay(100);
+//  nanglen();
+//  delay(100);
+//
+//  chay_do_line_doc_cam_bien(cb_sau, chay_lui, 30, 1, 1, 150, 150, 25);
+//  delay(100);
+//  quay_encoder(quay_trai, 250, 300, 0);
+//  quay_bat_line(quay_trai, 150, 24);
+//  delay(100);
+//  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 33, 1, 1, 140, 140, 25);
+//  delay(100);
+//  chay_do_line_do_encoder(cb_phai, chay_phai, 2500, 0, 140, 140, 25);
+//  chay_do_line_doc_cam_bien(cb_phai, chay_phai, 25, 1, 1, 140, 140, 25);
+//  delay(100);
+//  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 39, 1, 1, 140, 140, 25);
+//
+//  haxuong(); // drop two green can
+//  delay(100);
+//  tha();
+//  delay(100);
+//  nanglen();
+//  delay(100);
+//
+//  chay_do_line_doc_cam_bien(cb_sau, chay_lui, 30, 1, 1, 140, 140, 25);
+//  delay(100);
+//  chay_do_line_do_encoder(cb_phai, chay_phai, 1500, 0, 140, 140, 25);
+//  chay_do_line_do_encoder(cb_phai, chay_phai, 3000, 1, 160, 140, 25); // 170 //chạy mờ tới lon đỏ xanh
+//  delay(100);
+//  chay_do_line_doc_cam_bien(cb_phai, chay_phai, 36, 1, 1, 150, 150, 25);
+//  delay(100);
+//  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_lui, 39, 1, 0, 150, 150, 25);
+//  chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 1150, 1, 120, 120, 25);
+//  delay(100);
+//
+//  haxuong(); // grab red & green can
+//  delay(100);
+//  kep();
+//  delay(100);
+//  nanglen();
+//  delay(100);
+//
+//  chay_do_line_do_encoder(cb_truoc_sau, chay_toi, 1000, 1, 160, 160, 25);
+//  chay_do_line_doc_cam_bien(cb_trai, chay_trai, 25, 1, 1, 140, 140, 25);
+//  delay(100);
+//  chay_do_line_doc_cam_bien(cb_sau, chay_lui, 30, 1, 1, 160, 160, 25); // chạy mù
+//  chay_do_line_do_encoder(cb_trai, chay_trai, 2700, 0, 160, 160, 25);
+//  chay_do_line_doc_cam_bien(cb_trai, chay_trai, 25, 1, 1, 160, 160, 25);
+//  delay(100);
+//  chay_do_line_doc_cam_bien(cb_truoc_sau, chay_toi, 39, 1, 1, 140, 140, 25);
+//  delay(100);
+//
+//  haxuong(); // drop red & green can
+//  delay(100);
+//  tha();
+//  delay(100);
+//  nanglen();
+//  delay(100);
+//
+//  chay_do_line_doc_cam_bien(cb_sau, chay_lui, 30, 1, 1, 140, 140, 25);
   delay(1000000);
 }
