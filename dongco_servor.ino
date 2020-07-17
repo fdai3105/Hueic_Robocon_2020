@@ -5,6 +5,14 @@ void readyPosition()
   b = 80;
   khop1.write(a);
   khop2.write(b);
+
+  kep();
+  delay(10);
+  tha();
+  delay(10);
+  kep();
+  delay(10);
+  tha();
 }
 
 void nanglen()
@@ -25,7 +33,7 @@ void haxuong() // 90 to 0
 }
 void kep()
 {
-  for (b; b >= 7; b--)
+  for (b; b >= 5; b--)
   {
     khop2.write(b);
     delay (5);
